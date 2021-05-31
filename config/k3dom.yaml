@@ -1,0 +1,44 @@
+# K3DOM config
+
+# Map topic, grid cell mininum resolution
+topic: /occupied_cells_vis_array
+
+# Sampling resolutions
+ds_resolution: 0.1 # Downsampling factor
+
+# Free/Occupied Thresholds
+free_thresh: free_thresh
+occupied_thresh: 0.5
+valid_thresh: 0.5 # Threshold on sum of masses to distinguish known/unknown
+min_var: 0  # for visualizing variance map
+max_var: 0.15
+
+map_pub_freq: 1
+do_eval: false
+map_vis_mode: 0 # choose how to visualize(color) the map
+# -1: not visualize / 0: dynamic classification / 1: height map / 2: variance map
+map_shift_thresh: 1  # [m] shift local map when sensor is far from its default position
+
+# particle parameters
+particle_count: 1000000
+new_born_particle_count: 100000
+persistence_prob: 0.99
+stddev_process_noise_position: 0.01 # [m] per dimension
+stddev_process_noise_velocity: 0.1 # [m/s] per dimension
+birth_prob: 0.02
+stddev_velocity: 4.0 # [m/s] per dimension for birth distribution (not used now)
+init_max_velocity: 5.0 # [m/s] per dimension
+particle_min_vel: 0.1 # [m/s]
+
+# Kernel parameters
+sigma: 0.1 #10.0 # Actually sigma_0 in sparse kernel
+ls: 0.5 #0.3 # Length scale of the sparse kernel
+mass_scale: 2.5
+
+# initial concentration parameter
+prior_free: 0.001 # unoccupied
+prior_static: 0.001 # occupied_static
+prior_dynamic: 0.001 # occupied_dynamic
+prior_occ: 0 # dummy for compatability with ds-phd/mib
+
+gamma: 0.99 # decaying factor for prediction update

@@ -1,0 +1,36 @@
+# DS-PHD/MIB config
+
+# Map topic, grid cell mininum resolution
+topic: /occupied_cells_vis_array
+
+# Sampling resolutions
+ds_resolution: 0.1 # Downsampling factor
+
+# Free/Occupied Thresholds
+free_thresh: free_thresh
+occupied_thresh: 0.5
+valid_thresh: 0.1 # Threshold on sum of free and occupied evidences to distinguish known/unknown
+
+meas_occ_stddev: 0.1  # for making measurement grid, gaussian for occupied evidence w/ mean at measured point
+
+map_pub_freq: 1
+do_eval: false
+map_vis_mode: 0 # choose how to visualize(color) the map
+# -1: not visualize / 0: dynamic classification / 1: height
+
+# particle parameters
+particle_count: 1000000
+new_born_particle_count: 100000
+persistence_prob: 0.99
+stddev_process_noise_position: 0.01 # [m] per dimension
+stddev_process_noise_velocity: 0.1 # [m/s] per dimension
+birth_prob: 0.02
+stddev_velocity: 4.0 # [m/s] per dimension for birth distribution
+init_max_velocity: 5.0 # [m/s] per dimension
+particle_min_vel: 0 # [m/s] always zero mininum velocity since ds-phd/mib uses particles to express static objects as well as dynamic ones
+
+# initial evidence
+prior_free: 0 # unoccupied
+prior_occ: 0 # occupied
+prior_static: 0 # dummy for compatability with ds-phd/mib
+prior_dynamic: 0 # dummy for compatability with ds-phd/mib
